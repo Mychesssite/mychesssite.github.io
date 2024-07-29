@@ -1,5 +1,10 @@
 let tableBorder = 2;
-var cellSize = Math.floor(document.documentElement.clientWidth/14.5);/*по расчетам в экран должно влазить не менее 14 клеток подряд
+var cellSize = 20;
+function formatscreen()
+{
+    (document.documentElement.clientWidth>document.documentElement.clientHeight)?(cellSize = Math.floor(document.documentElement.clientHeight/14.5)):(cellsize = Math.floor(document.documentElement.clientWidth/14.5));
+}
+/*по расчетам в экран должно влазить не менее 14 клеток подряд
 надо будет сделать второй режим, без прокрутки вообще*/
 
 function initialization() {
@@ -72,6 +77,7 @@ function positioning()
 }*/
 
 window.onload = function() {
+    formatscreen();
     //coloring();
     initialization();
     //alert('init');
