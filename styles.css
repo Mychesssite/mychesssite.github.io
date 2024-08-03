@@ -64,6 +64,62 @@ background-color:rgb(255,176,46);}
     width: 40px;
     height: 40px;
 }
+#mydatasendbutton
+{
+    transform: translate(10px,800px);
+    height: 16px;
+    width: 50px;
+    color:white;
+    font-family: fantasy;
+    font-size: 10px;
+    border-width: 1px;
+    border-style: solid;
+    padding: 1px;
+    border-radius: 5px;
+    background-color: black;
+    background-clip: content-box;
+    
+}
+.animationoption
+{
+    border-width: 0px;
+    background-color: black;
+    color: antiquewhite;
+}
+#effectselector
+{
+    border-width: 2px;
+    border-radius: 5px;
+    font-weight: 500;
+    padding: 0px;
+    
+    
+}
+#effectselectorlabel
+{
+    font-weight: 500;
+}
+#interface
+{
+    position: absolute;
+    top:0px;
+    left:0px;
+    font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*#sqr1
 {
 	posistion:absolute;

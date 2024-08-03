@@ -1,8 +1,10 @@
 let tableBorder = 2;
 var cellSize = 20;
+var orientationIsAlbum = document.documentElement.clientWidth>document.documentElement.clientHeight
 function formatscreen()
+
 {
-    (document.documentElement.clientWidth>document.documentElement.clientHeight)?(cellSize = Math.floor(document.documentElement.clientHeight/14.5)):(cellSize = Math.floor(document.documentElement.clientWidth/14.5));
+    orientationIsAlbum?(cellSize = Math.floor(document.documentElement.clientHeight/14.5)):(cellSize = Math.floor(document.documentElement.clientWidth/14.5));
 }
 /*по расчетам в экран должно влазить не менее 14 клеток подряд
 надо будет сделать второй режим, без прокрутки вообще*/
@@ -34,6 +36,23 @@ function initialization() {
                        hr.style.borderWidth = bw;});
     chessboard = document.getElementById('board');      //настраеваем теперь уже саму таблицу
     chessboard.style.borderRadius = (Math.floor(cellSize/6)) + 'px';
+    
+    let interfacee = document.getElementById('interface');
+    interfacee.style.transform = 'translate(0px,'+ 15 * cellSize + 'px)';
+    
+    let sendbut = document.getElementById('mydatasendbutton');
+    sendbut.style.height = Math.floor(1.5*cellSize) + 'px';
+    sendbut.style.fontSize = cellSize + 'px';
+    sendbut.style.width = Math.floor(cellSize * 5.5)+ 'px';
+    sendbut.style.borderRadius = Math.floor(cellSize/1.5) + 'px';
+    sendbut.style.padding = bw;
+    sendbut.style.borderWidth = bw;
+    
+    const elementss = document.querySelectorAll('.interfaceelement');
+    elementss.forEach(elementt => {
+        elementt.style.fontSize = (Math.floor(cellSize/1.5)) + 'px';
+    });
+    
     //alert("success");
     
     
@@ -89,6 +108,16 @@ window.onload = function() {
             element.classList.toggle('active');
         };
     });
+      /*var formData = new FormData();
+
+  // добавить к пересылке ещё пару ключ - значение
+  formData.append("plain", "success");
+
+  // отослать
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "/");
+  xhr.send(formData);
+  alert("data sent");*/
 };
 
 
