@@ -102,12 +102,22 @@ window.onload = function() {
     //alert('init');
     positioning();
     //alert('posistioned');
-    const elements = document.querySelectorAll('.cell');
+    let elements = document.querySelectorAll('.cell');
     elements.forEach(element => {
         element.onclick = function() {
             element.classList.toggle('active');
         };
     });
+    
+    document.getElementById("colormodeborder").onclick = function()
+    {
+       
+        document.getElementById("colormoderound").classList.toggle('inactive');
+        document.getElementById("colormoderound").classList.toggle('active');
+        document.getElementById("colormodeborder").classList.toggle('inactive'); document.getElementById("colormodeborder").classList.toggle('active');
+       
+        
+    };
       /*var formData = new FormData();
 
   // добавить к пересылке ещё пару ключ - значение

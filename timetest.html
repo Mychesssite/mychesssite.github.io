@@ -1,0 +1,23 @@
+function getCurrentTime() {
+    const url = 'https://worldtimeapi.org/api/ip'; // Публичный API для получения времени по IP
+    
+    fetch(url, {
+        method: 'GET',
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+        throw new Error('Network response was not ok.');
+    })
+    .then(data => {
+        const time = data.datetime; // Получаем дату и время из ответа
+        alert('Текущее время: ' + time);
+    })
+    .catch(error => {
+        alert('Ошибка при получении времени: ' + error.message);
+    });
+}
+
+// Вызываем функцию для получения времени
+getCurrentTime();

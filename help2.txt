@@ -1,0 +1,12 @@
+<option value = "1">Ёффект 0</option>
+<option value = "1">Ёффект 1</option>
+<option value = "1">Ёффект 2</option>
+<option value = "1">Ёффект 3</option>
+<option value = "1">Ёффект 4</option>
+<option value = "1">Ёффект 5</option>
+<option value = "1">Ёффект 6</option>
+<option value = "1">Ёффект 7</option>
+<option value = "1">Ёффект 8</option>
+<option value = "1">Ёффект 9</option>
+<option value = "1">Ёффект 10</option>
+<option value = "1">Ёффект 11</option>

@@ -2,7 +2,7 @@
 <html translate="no">
 <head>
     <title>Тестовая страница для часов</title>
-    <link rel="stylesheet" href="styles.css">
+    <!--<link rel="stylesheet" href="styles.css">-->
     <meta name="google" content="notranslate">
     
 </head>
@@ -121,36 +121,143 @@
 
     
     </part>
-    <form action = "/data" method="POST">
-        <input type="hidden" name="plain" value="01010210" id="mydata">
-        <input type="submit" id="mydatasendbutton">
+    <form action = "#" method="get">
+        <input name="data" value="01010210">
+        <input type="image"  name="Отправить" value="whatissend" id="mydatabutton">
         </form>
-    <form id = "interface">
-        <label for = "effectselector" id = "effectselectorlabel" class = "interfaceelement">Анимация</label> 
-        <select id = "effectselector" class = "interfaceelement">
-<option value = "1" class = "animationoption interfaceelement">Эффект 1</option>
-<option value = "2" class = "animationoption  interfaceelement">Эффект 2</option>
-<option value = "3" class = "animationoption  interfaceelement">Эффект 3</option>
-<option value = "4" class = "animationoption  interfaceelement">Эффект 4</option>
-<option value = "5" class = "animationoption  interfaceelement">Эффект 5</option>
-<option value = "6" class = "animationoption  interfaceelement">Эффект 6</option>
-<option value = "7" class = "animationoption  interfaceelement">Эффект 7</option>
-<option value = "8" class = "animationoption  interfaceelement">Эффект 8</option>
-<option value = "9" class = "animationoption  interfaceelement">Эффект 9</option>
-<option value = "10" class = "animationoption  interfaceelement">Эффект 10</option>
-        </select>
-        <div id = "colormodeborder" class = "interfaceelement inactive">
-        <div id = "colormoderound" class = "interfaceelement inactive">
-            
-            </div>
-        </div>
+    <style>
+        #tableborder 
+{
+    
+    border-color: black;
+    border-width: 3px;  
+    border-style: solid;
+    border-radius: 20px; 
+    height: 480px;      
+    width: 480px; 
+    overflow: hidden
+}
+#alll
+{
+    
+}
+#board {
+    margin: 0px;
+    padding: 0px; 
+    border-color:black;
+    border-width: 0px;  
+    border-style: solid;
+    border-collapse: collapse;
+    border-radius: 20px;
+}
+#clockround 
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.whitee
+{
+    background-color:white;
+}
+.blackk
+{
+    background-color: rgb(0,0,0);
+}
+
+.cell  
+{
+    width:40px;
+    height:40px;
+    border-width: 0px;
+    border-style: solid;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.whitee.active {
+    background-color: rgb(255,255,150) ;
+}
+.blackk.active {
+background-color:rgb(255,176,46);}
+.clckrnd   
+{
+    background-color:white;
+    border-width: 2px;
+    border-color: black;
+    border-style:solid;
+    border-radius:20px;
+    position:absolute;
+    width: 40px;
+    height: 40px;
+}
         
-         
-        
-        
-        
-        </form>
-    <script src="script.js">
+        </style>
+    <script> 
+        let tableBorder = 2;
+var cellSize = Math.floor(document.documentElement.clientWidth/14.5);
+function initialization() {
+    const elements = document.querySelectorAll('.cell'); 
+    elements.forEach(element => {
+        element.style.width = cellSize + 'px'; 
+        element.style.height = cellSize + 'px'; 
+    }); 
+    let chessboard = document.getElementById('alll');
+    chessboard.style.position = 'absolute';
+    chessboard.style.top = 0.25 * cellSize;
+    chessboard.style.left = 0.25 * cellSize;
+    chessboard = document.getElementById('tableborder');
+    chessboard.style.borderWidth = tableBorder + 'px';
+    chessboard.style.transform = 'translate(' + 3 * cellSize + 'px ,' + 3 * cellSize + 'px)';
+    chessboard.style.width = 8 * cellSize + 'px';
+    chessboard.style.height = 8 * cellSize + 'px';
+    let rd = (Math.floor(cellSize / 3)) + 'px';
+    chessboard.style.borderRadius = rd;
+    let bw= (Math.floor(cellSize / 20)) + 'px';
+    if (bw == '0px')  {bw = '1px';};
+    chessboard.style.borderWidth = bw;
+    let hourss = document.querySelectorAll('.clckrnd');
+    hourss.forEach(hr =>{hr.style.borderRadius = rd;
+                       hr.style.borderWidth = bw;});
+    chessboard = document.getElementById('board');
+    chessboard.style.borderRadius = (Math.floor(cellSize/6)) + 'px';    
+}
+function positioning()
+    {
+    const coords = [
+        7, 0.5,
+        10, 1.5,
+        12.5, 4,
+        13.5, 7,
+        12.5, 10,
+        10, 12.5,
+        7, 13.5,
+        4, 12.5,
+        1.5, 10,
+        0.5, 7,
+        1.5, 4,
+        4, 1.5
+    ];
+    const hrs = document.querySelectorAll(".clckrnd");
+    let i = 0;
+    hrs.forEach(tmp => {
+            tmp.style.position = 'absolute';
+            tmp.style.left = cellSize *(coords[i]-0.5);
+            tmp.style.top = cellSize *(coords[i+1]-0.5);
+            i=i+2;
+        });
+    }
+window.onload = function() {
+    initialization();
+    positioning();
+    const elements = document.querySelectorAll('.cell');
+    elements.forEach(element => {
+        element.onclick = function() {
+            element.classList.toggle('active');
+        };
+    });
+};
     </script>
     </div>
 </body>
