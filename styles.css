@@ -142,7 +142,7 @@ background-color:rgb(255,176,46);}
     background-color: #ffffff;
     border-radius: 15px;
     border-width: 0px;
-    transition-property: background-color, border-color;
+    transition-property: background-color, border-color, transform;
     transition-duration: 1s;
 }
 
