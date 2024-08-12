@@ -1,0 +1,59 @@
+<!-- <head>
+    <link rel="stylesheet" href="styles.css"></head>
+        <span id="colormode">
+            <label for="colormodeborderround" id="colormodeborderlabel">Цветной режим</label>
+        <div id = "colormodeborder" class = "interfaceelement inactive">
+        <div id = "colormoderound" class = "interfaceelement inactive">
+            
+            </div>
+        </div>
+        </span>
+        <script>
+            function randomInt(max)
+{
+    return Math.floor(Math.random()*max + 0.5);
+}
+            document.getElementById("colormodeborder").onclick = function()
+    {
+       
+        document.getElementById("colormoderound").classList.toggle('inactive');
+        document.getElementById("colormoderound").classList.toggle('active');
+        document.getElementById("colormodeborder").classList.toggle('inactive');
+         document.getElementById("colormodeborder").classList.toggle('active');
+      let [redd, greenn, bluee] = [randomInt(51)*5, randomInt(51)*5, randomInt(51)*5]; document.getElementById("colormodeborderlabel").style.color = "rgb("+ redd + ", " + greenn + ", " + bluee + ")";
+      document.getElementById("colormodeborderlabel").style.backgroundColor = "rgb("+ bluee + ", " + redd + ", " + greenn + ")";
+    
+        
+    };        </script> -->
+    
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="colormode" style="display: flex; align-items: center;">
+        <label for="colormodeborderround" id="colormodeborderlabel">Цветной режим</label>
+        <div id="colormodeborder" class="interfaceelement inactive" style="margin-left: 10px;">
+            <div id="colormoderound" class="interfaceelement inactive"></div>
+        </div>
+    </div>
+
+    <script>
+        function randomInt(max) {
+            return Math.floor(Math.random() * max + 0.5);
+        }
+
+        document.getElementById("colormodeborder").onclick = function() {
+            document.getElementById("colormoderound").classList.toggle('inactive');
+            document.getElementById("colormoderound").classList.toggle('active');
+            document.getElementById("colormodeborder").classList.toggle('inactive');
+            document.getElementById("colormodeborder").classList.toggle('active');
+
+            let [redd, greenn, bluee] = [randomInt(51) * 5, randomInt(51) * 5, randomInt(51) * 5];
+            document.getElementById("colormodeborderlabel").style.color = "rgb(" + redd + ", " + greenn + ", " + bluee + ")";
+            document.getElementById("colormodeborderlabel").style.backgroundColor = "rgb(" + bluee + ", " + redd + ", " + greenn + ")";
+        };
+    </script>
+</body>
+
+    
