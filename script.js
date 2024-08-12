@@ -1,6 +1,10 @@
 let tableBorder = 2;
 var cellSize = 20;
 var orientationIsAlbum = document.documentElement.clientWidth>document.documentElement.clientHeight
+function randomInt(max)
+{
+    return Math.floor(Math.random()*max + 0.5);
+}
 function formatscreen()
 
 {
@@ -114,8 +118,11 @@ window.onload = function() {
        
         document.getElementById("colormoderound").classList.toggle('inactive');
         document.getElementById("colormoderound").classList.toggle('active');
-        document.getElementById("colormodeborder").classList.toggle('inactive'); document.getElementById("colormodeborder").classList.toggle('active');
-       
+        document.getElementById("colormodeborder").classList.toggle('inactive');
+         document.getElementById("colormodeborder").classList.toggle('active');
+      let [redd, greenn, bluee] = [randomInt(51)*5, randomInt(51)*5, randomInt(51)*5]; document.getElementById("colormodeborderlabel").style.color = "rgb("+ redd + ", " + greenn + ", " + bluee + ")";
+      document.getElementById("colormodeborderlabel").style.backgroundColor = "rgb("+ bluee + ", " + redd + ", " + greenn + ")";
+    
         
     };
       /*var formData = new FormData();

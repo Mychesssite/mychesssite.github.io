@@ -121,11 +121,19 @@
 
     
     </part>
+
+     
+     
     <form action = "/data" method="POST">
         <input type="hidden" name="plain" value="01010210" id="mydata">
         <input type="submit" id="mydatasendbutton">
         </form>
-    <form id = "interface">
+        
+  <div id="interface">  
+      
+      
+          
+    <form id = "animation">
         <label for = "effectselector" id = "effectselectorlabel" class = "interfaceelement">Анимация</label> 
         <select id = "effectselector" class = "interfaceelement">
 <option value = "1" class = "animationoption interfaceelement">Эффект 1</option>
@@ -139,17 +147,24 @@
 <option value = "9" class = "animationoption  interfaceelement">Эффект 9</option>
 <option value = "10" class = "animationoption  interfaceelement">Эффект 10</option>
         </select>
-        <div id = "colormodeborder" class = "interfaceelement inactive">
-        <div id = "colormoderound" class = "interfaceelement inactive">
+        </form>
+        
+        
+        
+        <div id="colormode">
+       <label for="colormodeborder" id="colormodeborderlabel">Цветной режим</label>
+            <div id = "colormodeborder" class = "interfaceelement inactive">
+                <div id = "colormoderound" class = "interfaceelement inactive">
             
+                </div>
             </div>
         </div>
         
-         
         
         
         
-        </form>
+        
+</div>
     <script src="script.js">
     </script>
     </div>
