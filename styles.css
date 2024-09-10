@@ -114,9 +114,9 @@ background-color:rgb(255,176,46);}
 }
 #colormodeborderlabel
 {
-    color: rgb(255, 255, 0);
+    color: rgb(0, 0, 0);
     font-family: fantasy;
-    font-weight: 500;
+    font-weight: 200;
     padding:10px;
     border-radius:10px;
     border-style:solid;
@@ -151,26 +151,26 @@ background-color:rgb(255,176,46);}
     
     
 }
-
-#colormoderound.inactive
+#colormoderound
 {
     height: 20px;
     width: 20px;
-    background-color: #ffffff;
     border-radius: 15px;
-    border-width: 0px;
+    border-width: 0px;	
+}
+#colormoderound.inactive
+{
+
+    background-color: #ffffff;
     transition-property: background-color, border-color, transform;
     transition-duration: 1s;
 }
 
 #colormoderound.active
 {
-    height: 20px;
-    width: 20px;
+
     transform: translate(30px,0px);
     background-color: #30ff30;
-    border-radius: 15px;
-    border-width: 0px;
     transition-property: background-color, border-color, transform;
     transition-duration: 1s;
 

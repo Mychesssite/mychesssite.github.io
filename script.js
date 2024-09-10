@@ -41,18 +41,19 @@ function initialization() {
     chessboard = document.getElementById('board');      //настраеваем теперь уже саму таблицу
     chessboard.style.borderRadius = (Math.floor(cellSize/6)) + 'px';
     
-    let interfacee = document.getElementById('interface');
+    let interfacee = document.getElementById('interface');		//настраеваем интерфейс в целом
     interfacee.style.transform = 'translate(0px,'+ 15 * cellSize + 'px)';
     
-    let sendbut = document.getElementById('mydatasendbutton');
+    let sendbut = document.getElementById('mydatasendbutton');		//настраеваем кнопку отправки
     sendbut.style.height = Math.floor(1.5*cellSize) + 'px';
     sendbut.style.fontSize = cellSize + 'px';
     sendbut.style.width = Math.floor(cellSize * 5.5)+ 'px';
     sendbut.style.borderRadius = Math.floor(cellSize/1.5) + 'px';
     sendbut.style.padding = bw;
     sendbut.style.borderWidth = bw;
+	let colorModeBorderLabel = document.getElementById("colormodeborderlabel");		//настраеваем переключатель режимов
     
-    const elementss = document.querySelectorAll('.interfaceelement');
+    const elementss = document.querySelectorAll('.interfaceelement');		//для каждого элемента интерфейса размер шрифта как полторы клетки
     elementss.forEach(elementt => {
         elementt.style.fontSize = (Math.floor(cellSize/1.5)) + 'px';
     });
@@ -112,18 +113,30 @@ window.onload = function() {
             element.classList.toggle('active');
         };
     });
-    
+    let colorModeOn = false;
     document.getElementById("colormodeborder").onclick = function()
     {
-       
+       //moving switcher + starting animation
         document.getElementById("colormoderound").classList.toggle('inactive');
         document.getElementById("colormoderound").classList.toggle('active');
         document.getElementById("colormodeborder").classList.toggle('inactive');
          document.getElementById("colormodeborder").classList.toggle('active');
-      let [redd, greenn, bluee] = [randomInt(51)*5, randomInt(51)*5, randomInt(51)*5]; document.getElementById("colormodeborderlabel").style.color = "rgb("+ redd + ", " + greenn + ", " + bluee + ")";
+		 //if is needed change color of text and background of text
+	 if(colorModeOn === false)
+	 {
+      let [redd, greenn, bluee] = [105+randomInt(150), 105 + randomInt(150), 105 + randomInt(150)]; 
+	  let rnd = randomInt(3);
+	  if (rnd == 1) 	document.getElementById("colormodeborderlabel").style.color = "rgb("+ (255) + ", " + (greenn-105) + ", " + (bluee-105) + ")";
+	  else if(rnd == 2) 	document.getElementById("colormodeborderlabel").style.color = "rgb("+ (redd-105) + ", " + (255) + ", " + (bluee-105) + ")";
+	  else		document.getElementById("colormodeborderlabel").style.color = "rgb("+ (redd-105) + ", " + (greenn-105) + ", " + (255) + ")";
       document.getElementById("colormodeborderlabel").style.backgroundColor = "rgb("+ bluee + ", " + redd + ", " + greenn + ")";
-    
-        
+	 }
+	 else
+	 {
+		 document.getElementById("colormodeborderlabel").style.color = "rgb(0,0,0)";
+		 document.getElementById("colormodeborderlabel").style.backgroundColor = "rgb(255,255,255)";
+	 }
+	colorModeOn = !colorModeOn;
     };
       /*var formData = new FormData();
 
