@@ -136,7 +136,6 @@ background-color:rgb(255,176,46);}
 #colormodeborder.inactive
 {
     background-color: #808080;
-    border-radius: 15px;
     transition-property: background-color, border-color;
     transition-duration: 1s;
 }
@@ -169,10 +168,17 @@ background-color:rgb(255,176,46);}
 #colormoderound.active
 {
 
-    transform: translate(30px,0px);
+    transform: translate(125%,0px);
     background-color: #30ff30;
     transition-property: background-color, border-color, transform;
     transition-duration: 1s;
+}
+
+
+#colorSelector
+{
+	
+}
 
 
 

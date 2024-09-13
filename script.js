@@ -51,19 +51,30 @@ function initialization() {
     sendbut.style.borderRadius = Math.floor(cellSize/1.5) + 'px';
     sendbut.style.padding = bw;
     sendbut.style.borderWidth = bw;
-	let colorModeBorderLabel = document.getElementById("colormodeborderlabel");		//настраеваем переключатель режимов
-    
+	let colorModeBorder = document.getElementById("colormodeborder");//настраеваем переключатель режимов
+    colorModeBorder.style.height = Math.floor(cellSize/1.5) + "px";
+	colorModeBorder.style.width = Math.floor(cellSize*1.5) + "px";
+	colorModeBorder.style.borderRadius=Math.floor(cellSize/1.5) + "px";
+	let colorModeBorderRound = document.getElementById("colormoderound");
+	colorModeBorderRound.style.height=Math.floor(cellSize/1.5) + "px";
+	colorModeBorderRound.style.width=Math.floor(cellSize/1.5) + "px";
+	colorModeBorderRound.style.borderRadius=Math.floor(cellSize/1.5) + "px";
     const elementss = document.querySelectorAll('.interfaceelement');		//для каждого элемента интерфейса размер шрифта как полторы клетки
     elementss.forEach(elementt => {
         elementt.style.fontSize = (Math.floor(cellSize/1.5)) + 'px';
     });
+	let colorSelector=document.getElementById("colorSelector");
+	colorSelector.style.height=Math.floor(cellSize/1.5) + "px";
+	colorSelector.style.width=Math.floor(cellSize/1.5) + "px";
+	colorSelector.style.borderRadius=Math.floor(cellSize/1.5) + "px";
+	
     
     //alert("success");
     
     
 }
 
-function positioning()
+function positioning()/*позиционирование клеток*/
     {
     const coords = [        /*массив координат. первая строка это 12 или 0 часов и далее по стрелке. записаны координаты центра клетки в системе координат, где единичный отрезок это 1 клетка, а поле имеет размерность 14*14 клеток, координаты цетнра доски на поле 7,7 .левого верхнего угла 3,3*/
         7, 0.5,
@@ -107,18 +118,24 @@ window.onload = function() {
     //alert('init');
     positioning();
     //alert('posistioned');
-    let elements = document.querySelectorAll('.cell');
+	
+	
+	
+	
+    let elements = document.querySelectorAll('.cell');/*при нажатии на элемент с классом cell ему присваивается или убирается класс active*/
     elements.forEach(element => {
         element.onclick = function() {
             element.classList.toggle('active');
         };
     });
     let colorModeOn = false;
-    document.getElementById("colormodeborder").onclick = function()
+    document.getElementById("colormodeborder").onclick = function()/*анимация переключателя режима цвета или не цвета*/
     {
        //moving switcher + starting animation
-        document.getElementById("colormoderound").classList.toggle('inactive');
-        document.getElementById("colormoderound").classList.toggle('active');
+        let colorModeRound = document.getElementById("colormoderound");
+		colorModeRound.classList.toggle('inactive');
+        colorModeRound.classList.toggle('active');
+		
         document.getElementById("colormodeborder").classList.toggle('inactive');
          document.getElementById("colormodeborder").classList.toggle('active');
 		 //if is needed change color of text and background of text
