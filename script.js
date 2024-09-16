@@ -63,10 +63,11 @@ function initialization() {
     elementss.forEach(elementt => {
         elementt.style.fontSize = (Math.floor(cellSize/1.5)) + 'px';
     });
-	let colorSelector=document.getElementById("colorSelector");
-	colorSelector.style.height=Math.floor(cellSize/1.5) + "px";
-	colorSelector.style.width=Math.floor(cellSize/1.5) + "px";
-	colorSelector.style.borderRadius=Math.floor(cellSize/1.5) + "px";
+	let colorSelector=document.getElementById("colorSelector"); //настраеваем кнопку выбора цвета 
+	colorSelector.style.height=Math.floor(cellSize*0.75) + "px";
+	colorSelector.style.width=Math.floor(cellSize*1.5) + "px";
+	colorSelector.style.borderRadius=Math.floor(cellSize*0.25) + "px";
+	
 	
     
     //alert("success");
@@ -126,6 +127,7 @@ window.onload = function() {
     elements.forEach(element => {
         element.onclick = function() {
             element.classList.toggle('active');
+			/* let colorValue = document.getElementById();*/ //начало создания возможности цветной раскраски
         };
     });
     let colorModeOn = false;
