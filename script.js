@@ -1,6 +1,20 @@
 let tableBorder = 2;
 var cellSize = 20;
 var orientationIsAlbum = document.documentElement.clientWidth>document.documentElement.clientHeight
+let defaultLightColor = "rgb(255,255,150)"
+let defaultBlackColor = "rgb(255,176,46)"
+let colorValue = "#000000"
+let colorModeOn = false;
+
+
+
+
+
+
+function randomInt(max)
+{
+    return Math.floor(Math.random()*max + 0.5);
+}
 function formatscreen()
 
 {
@@ -37,28 +51,39 @@ function initialization() {
     chessboard = document.getElementById('board');      //настраеваем теперь уже саму таблицу
     chessboard.style.borderRadius = (Math.floor(cellSize/6)) + 'px';
     
-    let interfacee = document.getElementById('interface');
+    let interfacee = document.getElementById('interface');		//настраеваем интерфейс в целом
     interfacee.style.transform = 'translate(0px,'+ 15 * cellSize + 'px)';
     
-    let sendbut = document.getElementById('mydatasendbutton');
+    let sendbut = document.getElementById('mydatasendbutton');		//настраеваем кнопку отправки
     sendbut.style.height = Math.floor(1.5*cellSize) + 'px';
     sendbut.style.fontSize = cellSize + 'px';
     sendbut.style.width = Math.floor(cellSize * 5.5)+ 'px';
     sendbut.style.borderRadius = Math.floor(cellSize/1.5) + 'px';
     sendbut.style.padding = bw;
     sendbut.style.borderWidth = bw;
-    
-    const elementss = document.querySelectorAll('.interfaceelement');
+	let colorModeBorder = document.getElementById("colormodeborder");//настраеваем переключатель режимов
+    colorModeBorder.style.height = Math.floor(cellSize/1.5) + "px";
+	colorModeBorder.style.width = Math.floor(cellSize*1.5) + "px";
+	colorModeBorder.style.borderRadius=Math.floor(cellSize/1.5) + "px";
+	let colorModeBorderRound = document.getElementById("colormoderound");
+	colorModeBorderRound.style.height=Math.floor(cellSize/1.5) + "px";
+	colorModeBorderRound.style.width=Math.floor(cellSize/1.5) + "px";
+	colorModeBorderRound.style.borderRadius=Math.floor(cellSize/1.5) + "px";
+    const elementss = document.querySelectorAll('.interfaceelement');		//для каждого элемента интерфейса размер шрифта как полторы клетки
     elementss.forEach(elementt => {
         elementt.style.fontSize = (Math.floor(cellSize/1.5)) + 'px';
     });
+	let colorSelector=document.getElementById("colorSelector"); //настраеваем кнопку выбора цвета 
+	colorSelector.style.height=Math.floor(cellSize*0.75) + "px";
+	colorSelector.style.width=Math.floor(cellSize*1.5) + "px";
+	colorSelector.style.borderRadius=Math.floor(cellSize*0.25) + "px";
+	
+	
     
-    //alert("success");
-    
-    
-}
+    //alert("succes  
+}//конец функции инициализации
 
-function positioning()
+function positioning()/*позиционирование клеток*/
     {
     const coords = [        /*массив координат. первая строка это 12 или 0 часов и далее по стрелке. записаны координаты центра клетки в системе координат, где единичный отрезок это 1 клетка, а поле имеет размерность 14*14 клеток, координаты цетнра доски на поле 7,7 .левого верхнего угла 3,3*/
         7, 0.5,
@@ -86,7 +111,7 @@ function positioning()
             i++;
             i++;
         });
-    }
+    } //конец функции позиционировния
 
 /*function coloring() {
     let blackk = document.querySelectorAll('.blackk');
@@ -102,21 +127,61 @@ window.onload = function() {
     //alert('init');
     positioning();
     //alert('posistioned');
-    let elements = document.querySelectorAll('.cell');
+	
+	
+	
+	
+    let elements = document.querySelectorAll('.cell');/*при нажатии на элемент с классом cell ему присваивается или убирается класс active*/
     elements.forEach(element => {
         element.onclick = function() {
             element.classList.toggle('active');
+            let colorValue;
+    if (colorModeOn) 
+    {       
+			colorValue = document.getElementById("colorSelector").value;
+			
+			}
+			else
+			{
+			if(element.classList.contains("active"))
+			{
+			    colorValue = element.classList.contains("blackk")?defaultBlackColor:defaultLightColor;
+			}
+			else
+			{
+			    colorValue= element.classList.contains("blackk")?"#000000":"#ffffff";
+			}
+			    
+			}
+			
+			element.style.backgroundColor=colorValue;
         };
     });
-    
-    document.getElementById("colormodeborder").onclick = function()
+    document.getElementById("colormodeborder").onclick = function()/*анимация переключателя режима цвета или не цвета*/
     {
-       
-        document.getElementById("colormoderound").classList.toggle('inactive');
-        document.getElementById("colormoderound").classList.toggle('active');
-        document.getElementById("colormodeborder").classList.toggle('inactive'); document.getElementById("colormodeborder").classList.toggle('active');
-       
-        
+       //moving switcher + starting animation
+        let colorModeRound = document.getElementById("colormoderound");
+		colorModeRound.classList.toggle('inactive');
+        colorModeRound.classList.toggle('active');
+		
+        document.getElementById("colormodeborder").classList.toggle('inactive');
+         document.getElementById("colormodeborder").classList.toggle('active');
+		 //if is needed change color of text and background of text
+	 if(colorModeOn === false)
+	 {
+      let [redd, greenn, bluee] = [105+randomInt(150), 105 + randomInt(150), 105 + randomInt(150)]; 
+	  let rnd = randomInt(3);
+	  if (rnd == 1) 	document.getElementById("colormodeborderlabel").style.color = "rgb("+ (255) + ", " + (greenn-105) + ", " + (bluee-105) + ")";
+	  else if(rnd == 2) 	document.getElementById("colormodeborderlabel").style.color = "rgb("+ (redd-105) + ", " + (255) + ", " + (bluee-105) + ")";
+	  else		document.getElementById("colormodeborderlabel").style.color = "rgb("+ (redd-105) + ", " + (greenn-105) + ", " + (255) + ")";
+      document.getElementById("colormodeborderlabel").style.backgroundColor = "rgb("+ bluee + ", " + redd + ", " + greenn + ")";
+	 }
+	 else
+	 {
+		 document.getElementById("colormodeborderlabel").style.color = "rgb(0,0,0)";
+		 document.getElementById("colormodeborderlabel").style.backgroundColor = "rgb(255,255,255)";
+	 }
+	colorModeOn = !colorModeOn;
     };
       /*var formData = new FormData();
 
